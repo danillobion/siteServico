@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\LinhaController;
+use App\Http\Controllers\ParadaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +39,10 @@ Route::group(['middleware' => 'type'], function () {
     Route::post('/home/linha/editar', [LinhaController::class, 'editarLinha'])->name('linha/editar');
     Route::post('/home/linha/atualizar', [LinhaController::class, 'atualizarLinha'])->name('linha/atualizar');
     Route::post('/home/linha/deletar', [LinhaController::class, 'deletarLinha'])->name('linha/deletar');
+    //paradas
+    Route::get('/home/parada', [ParadaController::class, 'index'])->name('parada/index');
+    Route::post('/home/parada/salvar', [ParadaController::class, 'salvarParada'])->name('parada/salvar');
+    Route::post('/home/parada/editar', [ParadaController::class, 'editarParada'])->name('parada/editar');
+    Route::post('/home/parada/atualizar', [ParadaController::class, 'atualizarParada'])->name('parada/atualizar');
+    Route::post('/home/parada/deletar', [ParadaController::class, 'deletarParada'])->name('parada/deletar');
 });
