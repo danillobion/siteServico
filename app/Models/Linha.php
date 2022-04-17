@@ -14,6 +14,7 @@ class Linha extends Model
    * @var array<int, string>
    */
     protected $fillable = [
+        'empresa_id',
         'nome',
         'numero',
         'tempo_de_espera',

@@ -39,9 +39,10 @@ class EmpresaController extends Controller
         $body = ['status'=>$empresa, "empresas" => $this->getAllEmpresas()];
         return $body;
     }
-    /*
+    /*]
     * Funcao responsavel por deletar o registro
     */
+    // !!!!!!!!!!!!!  para remover uma empresa é preciso remover as linhas, paradas e horários !!!!!!!!!!!!!!!11
     public function deletarEmpresa(Request $request){        
         $empresa = Empresa::where('id', $request->empresa_id)->delete();
         $body = ['status'=>$empresa, "empresas" => $this->getAllEmpresas()];

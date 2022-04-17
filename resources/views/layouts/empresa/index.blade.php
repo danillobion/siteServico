@@ -13,7 +13,7 @@
                     <table class="table table-hover  mb-0">
                         <thead>
                           <tr>
-                            <th scope="col" style="width:50%">Nome</th>
+                            <th scope="col" style="width:50%">Nome da empresa</th>
                             <th scope="col" style="width:50%">Ações</th>
                           </tr>
                         </thead>
