@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\LinhaController;
 use App\Http\Controllers\ParadaController;
+use App\Http\Controllers\HorarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,4 +46,10 @@ Route::group(['middleware' => 'type'], function () {
     Route::post('/home/parada/editar', [ParadaController::class, 'editarParada'])->name('parada/editar');
     Route::post('/home/parada/atualizar', [ParadaController::class, 'atualizarParada'])->name('parada/atualizar');
     Route::post('/home/parada/deletar', [ParadaController::class, 'deletarParada'])->name('parada/deletar');
+    //horario
+    Route::get('/home/horario/{parada_id}/{dia}', [HorarioController::class, 'index'])->name('horario/index');
+    Route::post('/home/horario/salvar', [HorarioController::class, 'salvarHorario'])->name('horario/salvar');
+    Route::post('/home/horario/editar', [HorarioController::class, 'editarHorario'])->name('horario/editar');
+    Route::post('/home/horario/atualizar', [HorarioController::class, 'atualizarHorario'])->name('horario/atualizar');
+    Route::post('/home/horario/deletar', [HorarioController::class, 'deletarHorario'])->name('horario/deletar');
 });

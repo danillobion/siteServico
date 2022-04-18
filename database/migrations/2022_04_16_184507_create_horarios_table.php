@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('horarios', function (Blueprint $table) {
             $table->id();
-            $table->string('dia');
+            $table->integer('linha_id');
+            $table->integer('dia'); //util (0), sabado (1) e domingo (2)
             $table->string('horario_bairro');
             $table->string('horario_centro');
             $table->timestamps();

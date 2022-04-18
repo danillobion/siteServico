@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Models\Linha;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
 
 class LinhaController extends Controller
 {

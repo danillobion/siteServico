@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
         Ações
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="linha">Linhas</a>
+        <a class="dropdown-item" href="/home/horario/${dados.id}/0">Horários</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" data-toggle="modal" data-target="#modalAtualizarLinha" onclick="editarLinha(${dados.id})">Editar</a>
         <a class="dropdown-item" href="#" style="color:red" onclick="botaoDeletar()">Deletar</a>
