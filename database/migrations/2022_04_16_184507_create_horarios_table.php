@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('horarios', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->integer('type')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->integer('linha_id');
+            $table->integer('dia'); //util (0), sabado (1) e domingo (2)
+            $table->string('horario_bairro');
+            $table->string('horario_centro');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('horarios');
     }
 };
