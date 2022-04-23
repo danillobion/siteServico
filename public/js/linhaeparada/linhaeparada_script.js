@@ -2,60 +2,61 @@
 /*
 * Variaveis globais
 */
-var horario_id;
-var linha_id;
-var dia;
-var horario_bairro;
-var horario_centro;
+var ordem;
+var parada_id;
+var rua;
+var latitude;
+var longitude;
 
 /*
 * Funcao responsavel por listar as paradas cadastradas no sistema
 */
 document.addEventListener("DOMContentLoaded", function() {
-    adicionarRegistros(DATA.horarios);
+    adicionarRegistros(DATA.linhaeparadas);
+    adicionarParadas(DATA.paradas);
   });
 
   function adicionarRegistros(dados){
-    document.getElementById("tableHorarios").innerHTML = ""; // limpar 
-    var table = document.getElementById("tableHorarios");
+    document.getElementById("tableLinhaeparadas").innerHTML = ""; // limpar 
+    var table = document.getElementById("tableLinhaeparadas");
     dados.map(e=>{
         var row = table.insertRow(0);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
-        if(e.dia == 0){
-            cell1.innerHTML = "Útil";
-        }else if(e.dia == 1){
-            cell1.innerHTML = "Sábado";
-        }else if(e.dia == 2){
-            cell1.innerHTML = "Domingo";
-        }
-        cell2.innerHTML = e.horario_bairro;
-        cell3.innerHTML = e.horario_centro;
-        cell4.innerHTML = tipoDropdown(e);
+        cell1.innerHTML = e.ordem;
+        cell2.innerHTML = e.rua;
+        cell3.innerHTML = tipoDropdown(e);
     });
+  }
+  function adicionarParadas(dados){
+    dados.forEach(element => {
+        $('#select_parada').append($('<option>', {
+            value: element.id,
+            text: element.rua
+        }));       
+      });
   }
 
   function tipoDropdown(dados){
         return `
         <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="${dados.id}" linha_id="${dados.linha_id}" dia="${dados.dia}" horario_bairro="${dados.horario_bairro}" horario_centro="${dados.horario_centro}" onclick="atualizarVariaveisGlobais(this)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Ações
+        <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" ordem="${dados.ordem}" parada_id="${dados.parada_id}" rua="${dados.rua}" latitude="${dados.latitude}" longitude="${dados.longitude}" onclick="atualizarVariaveisGlobais(this)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Ações
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" data-toggle="modal" data-target="#modalAtualizarLinha" onclick="editarParada(${dados.id})">Editar</a>
+        <a class="dropdown-item" data-toggle="modal" data-target="#modalAtualizarLinhaeParada" onclick="editarLinhaeParada(${dados.parada_id})">Alterar posição</a>
         <a class="dropdown-item" href="#" style="color:red" onclick="botaoDeletar()">Deletar</a>
         </div>
         </div>`;
 }
 
 function atualizarVariaveisGlobais(dados){
-    horario_id = dados.getAttribute("id");
-    linha_id = dados.getAttribute("linha_id");
-    dia = dados.getAttribute("dia");
-    horario_bairro = dados.getAttribute("horario_bairro");
-    horario_centro = dados.getAttribute("horario_centro");
+    ordem = dados.getAttribute("ordem");
+    parada_id = dados.getAttribute("parada_id");
+    rua = dados.getAttribute("rua");
+    latitude = dados.getAttribute("latitude");
+    longitude = dados.getAttribute("longitude");
 }
 
  /*
@@ -89,20 +90,4 @@ function interacao(acao){
         $("#botaoAtualizar").prop("disabled",false);
         $("#botaoAtualizar").removeClass("disabled");
     }
-}
-function selectHorario(dia){
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        type: 'GET',
-        url: "/home/horario/filtar/"+DATA.linha_id+"/"+dia+"",
-        dataType: 'JSON',
-        processData: false,
-        contentType: false,
-        success: function(resultado) {
-            adicionarRegistros(resultado.horarios);
-            interacao("stop");
-        }
-    });
 }

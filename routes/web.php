@@ -6,6 +6,8 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\LinhaController;
 use App\Http\Controllers\ParadaController;
 use App\Http\Controllers\HorarioController;
+use App\Http\Controllers\LinhaEParadaController;
+use App\Http\Controllers\ApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +28,6 @@ Auth::routes();
 
 //aberto
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 //acesso restrito a usuarios logados
 Route::group(['middleware' => 'type'], function () {
     //empresa
@@ -48,8 +49,17 @@ Route::group(['middleware' => 'type'], function () {
     Route::post('/home/parada/deletar', [ParadaController::class, 'deletarParada'])->name('parada/deletar');
     //horario
     Route::get('/home/horario/{parada_id}/{dia}', [HorarioController::class, 'index'])->name('horario/index');
+    Route::get('/home/horario/filtar/{parada_id}/{dia}', [HorarioController::class, 'filtarHorario'])->name('horario/filtrar');
     Route::post('/home/horario/salvar', [HorarioController::class, 'salvarHorario'])->name('horario/salvar');
     Route::post('/home/horario/editar', [HorarioController::class, 'editarHorario'])->name('horario/editar');
     Route::post('/home/horario/atualizar', [HorarioController::class, 'atualizarHorario'])->name('horario/atualizar');
     Route::post('/home/horario/deletar', [HorarioController::class, 'deletarHorario'])->name('horario/deletar');
+    //linha x parada
+    Route::get('/home/linha/parada/{linha_id}', [LinhaEParadaController::class, 'index'])->name('linha/parada/index');
+    Route::post('/home/linha/parada/salvar', [LinhaEParadaController::class, 'salvarLinhaeParada'])->name('linha/parada/salvar');
+    Route::post('/home/linha/parada/deletar', [LinhaEParadaController::class, 'deletarLinhaeParada'])->name('linha/parada/deletar');
+    Route::post('/home/linha/parada/atualizar', [LinhaEParadaController::class, 'atualizarLinhaeParada'])->name('linha/parada/atualizar');
 });
+
+//API
+Route::get('home/api/dados', [ApiController::class, 'transporteColetivo'])->name('api/dados');
