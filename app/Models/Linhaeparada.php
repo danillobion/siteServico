@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Linha_x_Parada extends Model
+class Linhaeparada extends Model
 {
     use HasFactory;
     /**
@@ -14,7 +14,9 @@ class Linha_x_Parada extends Model
    * @var array<int, string>
    */
     protected $fillable = [
+        'ordem',
         'linha_id',
-        'padara_id',
+        'parada_id',
     ];
+    
 }

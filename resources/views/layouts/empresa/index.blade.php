@@ -93,8 +93,8 @@
         empresas: <?=json_encode($empresas)?>,
     };
 </script>
-<script src="/js/empresa/empresa_script.js"></script>
-<script src="/js/empresa/salvar.js"></script>
-<script src="/js/empresa/atualizar.js"></script>
-<script src="/js/empresa/deletar.js"></script>
+<script src="../js/empresa/empresa_script.js"></script>
+<script src="../js/empresa/salvar.js"></script>
+<script src="../js/empresa/atualizar.js"></script>
+<script src="../js/empresa/deletar.js"></script>
 @endsection

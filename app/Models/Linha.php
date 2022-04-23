@@ -22,7 +22,7 @@ class Linha extends Model
       ];
 
     public function paradas() {
-        return $this->hasMany("\App\Linha_x_Parada");
+        return $this->hasMany("\App\Linhaeparada");
     }
     public function horarios() {
         return $this->hasMany("\App\Horario");

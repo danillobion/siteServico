@@ -23,6 +23,14 @@ class HorarioController extends Controller
         $body = ['linha_id' => $linha_id, 'dia' => $dia, 'horarios' => $horarios];
         return $body;
     }
+    /*
+    * Funcao responsavel por filtrar os horarios
+    */
+    public function filtarHorario($linha_id, $dia){
+        $horarios = Horario::where('linha_id', $linha_id)->where('dia', $dia)->get();
+        $body = ['linha_id' => $linha_id, 'dia' => $dia, 'horarios' => $horarios];
+        return $body;
+    }
      /*
     * Funcao responsavel por salvar o novo horario
     */

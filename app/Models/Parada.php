@@ -20,6 +20,6 @@ class Parada extends Model
     ];
 
     public function linhas() {
-        return $this->belongsTo("\App\Linha_x_Parada");
+        return $this->belongsTo("\App\Linhaeparada");
     }
 }

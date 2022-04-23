@@ -8,11 +8,14 @@
                 <div class="card-header d-flex justify-content-between">
                     <h6 style="margin-top: 10px">{{ __('Horário da linha XXX') }}</h6>
                     <div class="btn-group">
-                        <select class="form-select" aria-label="Default select example">
-                            <option value="0" selected>Útil</option>
-                            <option value="1">Sábado</option>
-                            <option value="2">Domingo</option>
-                          </select>                        
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filtro</button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item"onclick="selectHorario(0)">Útil</a>
+                              <a class="dropdown-item"onclick="selectHorario(1)">Sábado</a>
+                              <a class="dropdown-item"onclick="selectHorario(2)">Domingo</a>
+                            </div>
+                          </div>
                           <button type="button" class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#exampleModalLong" onclick="limparCampos()" style="margin-left: 10px">{{ __('Novo horário') }}</button>
                     </div>
                 </div>
@@ -52,7 +55,7 @@
                                     <label for="dia_horario">{{ __('Dia') }}</label>
                                     <select class="custom-select" id="dia_horario" name="dia_horario">
                                         <option selected disabled>Selecione uma opção</option>
-                                        <option value="0">Útil</option>
+                                        <option value="0" >Útil</option>
                                         <option value="1">Sábado</option>
                                         <option value="2">Domingo</option>
                                       </select>
@@ -102,7 +105,7 @@
                                     <label for="dia_horario">{{ __('Dia') }}</label>
                                     <select class="custom-select" id="editar_dia_horario" name="editar_dia_horario">
                                         <option selected disabled>Selecione uma opção</option>
-                                        <option value="0">Útil</option>
+                                        <option value="0" >Útil</option>
                                         <option value="1">Sábado</option>
                                         <option value="2">Domingo</option>
                                       </select>

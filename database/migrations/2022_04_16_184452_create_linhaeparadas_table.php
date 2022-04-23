@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('linhas_x_paradas', function (Blueprint $table) {
+        Schema::create('linhaeparadas', function (Blueprint $table) {
             $table->id();
+            $table->integer('ordem');
             $table->integer('linha_id');
-            $table->integer('padara_id');
+            $table->integer('parada_id');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('linhas_x_paradas');
+        Schema::dropIfExists('linhaeparadas');
     }
 };
