@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home1/vaides83/public/
+    - /bin/cp index.php $DEPLOYPATH
